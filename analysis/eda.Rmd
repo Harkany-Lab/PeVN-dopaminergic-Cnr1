@@ -118,6 +118,8 @@ rar2020_srt_pub$age <-
 Idents(rar2020_srt_pub) <- "wtree"
 neurons <-
   subset(rar2020_srt_pub, idents = c("18", "32"))
+neurons <- RenameIdents(neurons, "18" = "PeVN_Onecut3", "32" = "Arc_TIDA")
+neurons$celltype <- Idents(neurons)
 neurons <-
   subset(neurons, subset = Slc17a6 == 0)
 onecut3 <-
@@ -659,13 +661,13 @@ DotPlot(
 ```
 
 
-### Expression of GABA receptors in dopaminergic Onecut3 positive cells
+### Expression of GABA receptors in dopaminergic TIDA or Onecut3 positive cells
 ```{r plot-dotplot-age-gabar-dop}
 DotPlot(
   object = oc3_fin_neurotrans$dopaminergic,
   features = gabar,
   group.by = "age",
-  cols = c("#ffc2c2", "#ff3c00"),
+  split.by = "celltype",
   col.min = -1, col.max = 1
 ) + RotatedAxis()
 ```
@@ -682,14 +684,14 @@ DotPlot(
 ) + RotatedAxis()
 ```
 
-### Expression of glutamate receptors in dopaminergic Onecut3 positive cells
+### Expression of glutamate receptors in dopaminergic TIDA or Onecut3 positive cells
 
-```{r plot-dotplot-age-glur-dop, fig.height=5, fig.width=9}
+```{r plot-dotplot-age-glur-dop, fig.height=7, fig.width=9}
 DotPlot(
   object = oc3_fin_neurotrans$dopaminergic,
   features = glutr,
   group.by = "age",
-  cols = c("#ffc2c2", "#ff3c00"),
+  split.by = "celltype",
   col.min = -1, col.max = 1
 ) + RotatedAxis()
 ```
@@ -709,14 +711,14 @@ DotPlot(
 ```
 
 
-### Expression of GABA receptors in dopaminergic Onecut3 positive cells
+### Expression of GABA receptors in dopaminergic TIDA or Onecut3 positive cells
 
-```{r plot-dotplot-stage-gabar-dop, fig.height=5, fig.width=9}
+```{r plot-dotplot-stage-gabar-dop, fig.height=7, fig.width=9}
 DotPlot(
   object = oc3_fin_neurotrans$dopaminergic,
   features = gabar,
   group.by = "stage",
-  cols = c("#ffc2c2", "#ff3c00"),
+  split.by = "celltype",
   col.min = -1, col.max = 1
 ) + RotatedAxis()
 ```
@@ -735,14 +737,14 @@ DotPlot(
 ```
 
 
-### Expression of glutamate receptors in dopaminergic Onecut3 positive cells
+### Expression of glutamate receptors in dopaminergic TIDA or Onecut3 positive cells
 
-```{r plot-dotplot-stage-glur-dop, fig.height=5, fig.width=9}
+```{r plot-dotplot-stage-glur-dop, fig.height=7, fig.width=9}
 DotPlot(
   object = oc3_fin_neurotrans$dopaminergic,
   features = glutr,
   group.by = "stage",
-  cols = c("#ffc2c2", "#ff3c00"),
+  split.by = "celltype",
   col.min = -1, col.max = 1
 ) + RotatedAxis()
 ```
@@ -751,7 +753,7 @@ DotPlot(
 
 ### Expression of neuromodulators receptors in GABAergic Onecut3 positive cells
 
-```{r plot-dotplot-stage-npr-gaba, fig.height=5, fig.width=9}
+```{r plot-dotplot-stage-npr-gaba, fig.height=5, fig.width=15}
 DotPlot(
   object = oc3_fin_neurotrans$GABAergic,
   features = npr,
@@ -762,14 +764,14 @@ DotPlot(
 ```
 
 
-### Expression of neuromodulators receptors in dopaminergic Onecut3 positive cells
+### Expression of neuromodulators receptors in dopaminergic TIDA or Onecut3 positive cells
 
-```{r plot-dotplot-stage-npr-dop, fig.height=5, fig.width=9}
+```{r plot-dotplot-stage-npr-dop, fig.height=6, fig.width=16}
 DotPlot(
   object = oc3_fin_neurotrans$dopaminergic,
   features = npr,
   group.by = "stage",
-  cols = c("#ffc2c2", "#ff3c00"),
+  split.by = "celltype",
   col.min = -1, col.max = 1
 ) + RotatedAxis()
 ```
@@ -788,14 +790,14 @@ DotPlot(
 ```
 
 
-### Expression of endocannabinoids relevant genes in dopaminergic Onecut3 positive cells
+### Expression of endocannabinoids relevant genes in dopaminergic TIDA or Onecut3 positive cells
 
-```{r plot-dotplot-stage-cnbn-dop, fig.height=5, fig.width=9}
+```{r plot-dotplot-stage-cnbn-dop, fig.height=7, fig.width=9}
 DotPlot(
   object = oc3_fin_neurotrans$dopaminergic,
   features = cnbn,
   group.by = "stage",
-  cols = c("#ffc2c2", "#ff3c00"),
+  split.by = "celltype",
   col.min = -1, col.max = 1
 ) + RotatedAxis()
 ```
@@ -845,7 +847,6 @@ upset(
   text.scale = c(2, 1.6, 2, 1.3, 2, 3),
   nsets = 15,
   sets = c(
-    "Gad1", "Gad2", "Slc32a1",
     "Th", "Onecut3",
     cnbn, "Prlr"
   ) %>%
@@ -862,14 +863,14 @@ upset(
   sets.x.label = "Number of cells",
   text.scale = c(2, 1.6, 2, 1.3, 2, 3),
   nsets = 15,
-  sets = c(cnbn, "Prlr", "Slc32a1", "Th", "Onecut3") %>%
+  sets = c("Cnr1", "Prlr", "Th", "Onecut3") %>%
     .[. %in% colnames(content_sbs_mtx_oc)],
   nintersects = 10,
   empty.intersections = NULL
 )
 ```
 
-```{r plot-piecharts-sbs-oc3-chisqr, fig.height=10, fig.width=12}
+```{r plot-piecharts-sbs-oc3-chisqr, fig.height=12, fig.width=14}
 sbs_mtx_oc_full <- content_sbs_mtx_oc |>
   select(any_of(c(
     neurotrans, cnbn, "Prlr", "Cnr1", "Gpr55", "Onecut3"
@@ -878,11 +879,17 @@ sbs_mtx_oc_full <- content_sbs_mtx_oc |>
 
 sbs_mtx_oc_full |> glimpse()
 
-sbs_mtx_oc_full$modulator <-
+sbs_mtx_oc_full$CB1R <-
   sbs_mtx_oc_full %>%
   select(Cnr1, Gpr55) %>%
-  mutate(modulator = if_any(.fns = ~ .x > 0)) %>%
-  .$modulator
+  mutate(CB1R = Cnr1 > 0) %>%
+  .$CB1R
+
+sbs_mtx_oc_full$PRLR <-
+  sbs_mtx_oc_full %>%
+  select(Prlr) %>%
+  mutate(PRLR = Prlr > 0) %>%
+  .$PRLR
 
 sbs_mtx_oc_full$oc3 <-
   (sbs_mtx_oc_full$Onecut3 > 0)
@@ -895,14 +902,44 @@ set.seed(123)
 grouped_ggpiestats(
   # arguments relevant for `ggpiestats()`
   data = sbs_mtx_oc_full,
-  x = modulator,
+  x = CB1R,
   y = oc3,
   grouping.var = status,
   perc.k = 1,
   package = "ggsci",
   palette = "category10_d3",
   # arguments relevant for `combine_plots()`
-  title.text = "Neuromodulator specification of onecut-driven hypothalamic neuronal lineages by Onecut3 and main neurotransmitter expression",
+  title.text = "Cnr1 specification of onecut-driven hypothalamic neuronal lineages by Onecut3 and main neurotransmitter expression",
+  caption.text = "Asterisks denote results from proportion tests; \n***: p < 0.001, ns: non-significant",
+  plotgrid.args = list(nrow = 2)
+)
+
+grouped_ggpiestats(
+  # arguments relevant for `ggpiestats()`
+  data = sbs_mtx_oc_full,
+  x = PRLR,
+  y = CB1R,
+  grouping.var = status,
+  perc.k = 1,
+  package = "ggsci",
+  palette = "category10_d3",
+  # arguments relevant for `combine_plots()`
+  title.text = "Prlr specification of onecut-driven PeVN or TIDA hypothalamic neuronal lineages by Cnr1 and main neurotransmitter expression",
+  caption.text = "Asterisks denote results from proportion tests; \n***: p < 0.001, ns: non-significant",
+  plotgrid.args = list(nrow = 2)
+)
+
+grouped_ggpiestats(
+  # arguments relevant for `ggpiestats()`
+  data = sbs_mtx_oc_full,
+  x = PRLR,
+  y = CB1R,
+  grouping.var = celltype,
+  perc.k = 1,
+  package = "ggsci",
+  palette = "category10_d3",
+  # arguments relevant for `combine_plots()`
+  title.text = "Prlr specification of onecut-driven PeVN or TIDA hypothalamic neuronal lineages by Cnr1",
   caption.text = "Asterisks denote results from proportion tests; \n***: p < 0.001, ns: non-significant",
   plotgrid.args = list(nrow = 2)
 )
