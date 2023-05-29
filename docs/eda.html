@@ -390,7 +390,7 @@ development</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -401,8 +401,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -415,9 +415,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>PeVN-dopaminergic-Cnr1/</code>
@@ -440,21 +440,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has staged changes. To know which version of the
-R Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -545,15 +542,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1treeaaece06afa65f79fbf6f204a2eec4c5051617a5ctargetblankaaece06a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1tree62b0185ffbc7639fdf33ce8d190f155d270f0e34targetblank62b0185a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/aaece06afa65f79fbf6f204a2eec4c5051617a5c" target="_blank">aaece06</a>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/62b0185ffbc7639fdf33ce8d190f155d270f0e34" target="_blank">62b0185</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1treeaaece06afa65f79fbf6f204a2eec4c5051617a5ctargetblankaaece06a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1tree62b0185ffbc7639fdf33ce8d190f155d270f0e34targetblank62b0185a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -563,7 +560,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/aaece06afa65f79fbf6f204a2eec4c5051617a5c" target="_blank">aaece06</a>.
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/62b0185ffbc7639fdf33ce8d190f155d270f0e34" target="_blank">62b0185</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -578,30 +575,7 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    analysis/figure/
     Ignored:    output/tables/
-
-Unstaged changes:
-    Modified:   analysis/eda.Rmd
-    Modified:   data/oc3_fin.h5seurat
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Gpr55-Cnr1_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Gpr55-Onecut3_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Cnr1_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Ddc_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Gad1_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Gad2_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Gpr55_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Onecut2_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Prlr_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Slc32a1_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Slc6a3_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Onecut3-Th_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Slc32a1-Cnr1_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Slc32a1-Gpr55_.pdf
-    Modified:   output/figures/stat-corr-plt_oc3-rna-data-Slc32a1-Onecut3_.pdf
-
-Staged changes:
-    Modified:   analysis/eda.Rmd
 
 </code></pre>
 <p>
@@ -646,6 +620,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/analysis/eda.Rmd" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+<td>
+specify analysis to cnr1
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/eda.html" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+<td>
+specify analysis to cnr1
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2352,7 +2360,6 @@ positive cells</h3>
   features = gabar,
   group.by = &quot;age&quot;,
   split.by = &quot;celltype&quot;,
-  cols = list(c(&quot;#fcc2c2&quot;, &quot;#ff3c00&quot;), c(&quot;#fffef1&quot;, &quot;#00FE00&quot;)),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
 <p><img src="figure/eda.Rmd/plot-dotplot-age-gabar-dop-1.png" width="1344" style="display: block; margin: auto;" /></p>
@@ -2378,6 +2385,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-age-gabar-dop-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-dotplot-age-gabar-dop-1.png" target="_blank">aaece06</a>
@@ -2455,7 +2473,6 @@ positive cells</h3>
   features = glutr,
   group.by = &quot;age&quot;,
   split.by = &quot;celltype&quot;,
-  cols = list(c(&quot;#fcc2c2&quot;, &quot;#ff3c00&quot;), c(&quot;#fffef1&quot;, &quot;#00FE00&quot;)),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
 <p><img src="figure/eda.Rmd/plot-dotplot-age-glur-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
@@ -2481,6 +2498,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-age-glur-dop-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-dotplot-age-glur-dop-1.png" target="_blank">aaece06</a>
@@ -2561,7 +2589,6 @@ positive cells</h3>
   features = gabar,
   group.by = &quot;stage&quot;,
   split.by = &quot;celltype&quot;,
-  cols = list(c(&quot;#fcc2c2&quot;, &quot;#ff3c00&quot;), c(&quot;#fffef1&quot;, &quot;#00FE00&quot;)),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
 <p><img src="figure/eda.Rmd/plot-dotplot-stage-gabar-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
@@ -2587,6 +2614,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-gabar-dop-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-dotplot-stage-gabar-dop-1.png" target="_blank">aaece06</a>
@@ -2664,7 +2702,6 @@ positive cells</h3>
   features = glutr,
   group.by = &quot;stage&quot;,
   split.by = &quot;celltype&quot;,
-  cols = list(c(&quot;#fcc2c2&quot;, &quot;#ff3c00&quot;), c(&quot;#fffef1&quot;, &quot;#00FE00&quot;)),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
 <p><img src="figure/eda.Rmd/plot-dotplot-stage-glur-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
@@ -2690,6 +2727,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-glur-dop-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-dotplot-stage-glur-dop-1.png" target="_blank">aaece06</a>
@@ -2743,6 +2791,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-npr-gaba-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-dotplot-stage-npr-gaba-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -2767,7 +2826,6 @@ Onecut3 positive cells</h3>
   features = npr,
   group.by = &quot;stage&quot;,
   split.by = &quot;celltype&quot;,
-  cols = list(c(&quot;#fcc2c2&quot;, &quot;#ff3c00&quot;), c(&quot;#fffef1&quot;, &quot;#00FE00&quot;)),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
 <p><img src="figure/eda.Rmd/plot-dotplot-stage-npr-dop-1.png" width="1536" style="display: block; margin: auto;" /></p>
@@ -2793,6 +2851,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-npr-dop-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-dotplot-stage-npr-dop-1.png" target="_blank">aaece06</a>
@@ -2870,7 +2939,6 @@ or Onecut3 positive cells</h3>
   features = cnbn,
   group.by = &quot;stage&quot;,
   split.by = &quot;celltype&quot;,
-  cols = list(c(&quot;#fcc2c2&quot;, &quot;#ff3c00&quot;), c(&quot;#fffef1&quot;, &quot;#00FE00&quot;)),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
 <p><img src="figure/eda.Rmd/plot-dotplot-stage-cnbn-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
@@ -2896,6 +2964,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-cnbn-dop-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-dotplot-stage-cnbn-dop-1.png" target="_blank">aaece06</a>
@@ -2985,6 +3064,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-upset-sbs-oc3-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-upset-sbs-oc3-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -3032,6 +3122,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-upset-sbs-oc3-mod-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-upset-sbs-oc3-mod-1.png" target="_blank">aaece06</a>
@@ -3159,6 +3260,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-1.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -3187,6 +3299,43 @@ Evgenii O. Tretiakov
   plotgrid.args = list(nrow = 2)
 )</code></pre>
 <p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-2.png" width="1344" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-piecharts-sbs-oc3-chisqr-2">
+Past versions of plot-piecharts-sbs-oc3-chisqr-2.png
+</button>
+</p>
+<div id="fig-plot-piecharts-sbs-oc3-chisqr-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-2.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>grouped_ggpiestats(
   # arguments relevant for `ggpiestats()`
   data = sbs_mtx_oc_full,
@@ -3202,6 +3351,43 @@ Evgenii O. Tretiakov
   plotgrid.args = list(nrow = 2)
 )</code></pre>
 <p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-3.png" width="1344" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-piecharts-sbs-oc3-chisqr-3">
+Past versions of plot-piecharts-sbs-oc3-chisqr-3.png
+</button>
+</p>
+<div id="fig-plot-piecharts-sbs-oc3-chisqr-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-3.png" target="_blank">62b0185</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
