@@ -3,15 +3,24 @@ output_dir: ../docs
 navbar:
   title: "PeVN-dopaminergic-Cnr1"
   left:
-  - text: Home
-    href: index.html
-  - text: About
-    href: about.html
-  - text: License
-    href: license.html
+    - text: Home
+      href: index.html
+    - text: Analysis
+      href: eda.html
+    - text: About
+      href: about.html
+    - text: Methods
+      href: 90-methods.html
+  right:
+    - text: License
+      href: license.html
+    - icon: fa-github
+      href: https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1
 output:
   workflowr::wflow_html:
     toc: yes
     toc_float: yes
     theme: cosmo
     highlight: textmate
+    code_folding: hide
+    df_print: paged

@@ -1,0 +1,909 @@
+---
+title: "Exploratory analysis of Cnr1 in mouse Onecut3-GABAergic and dopaminergic hypothalamic neurons during development"
+author: "Evgenii Tretiakov"
+date: "`r Sys.Date()`"
+output:
+  workflowr::wflow_html:
+    toc: true
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+docname <- "01-exploratory-data-analysis"
+now <- Sys.time()
+# Time chunks during knitting
+knitr::knit_hooks$set(timeit = function(before) {
+  if (before) {
+    print(paste("Start:", Sys.time()))
+    now <<- Sys.time()
+  } else {
+    print(paste("Stop:", Sys.time()))
+    print(Sys.time() - now)
+  }
+})
+
+knitr::opts_chunk$set(
+  autodep        = TRUE,
+  cache          = FALSE,
+  cache.comments = FALSE,
+  cache.lazy     = FALSE,
+  dev            = c("png", "pdf"),
+  echo           = TRUE,
+  error          = FALSE,
+  fig.align      = "center",
+  fig.width      = 14,
+  fig.height     = 12,
+  message        = FALSE,
+  warning        = FALSE,
+  timeit         = TRUE
+)
+```
+```{r load-packages}
+# Load tidyverse infrastructure packages
+library(here)
+library(tidyverse)
+library(magrittr)
+library(zeallot)
+library(future)
+
+# Load packages for scRNA-seq analysis and visualisation
+library(sctransform)
+library(Seurat)
+library(SeuratWrappers)
+library(SeuratDisk)
+library(scCustomize)
+library(UpSetR)
+library(patchwork)
+library(RColorBrewer)
+library(Nebulosa)
+```
+```{r set-paths}
+src_dir <- here("code")
+data_dir <- here("data")
+output_dir <- here("output")
+plots_dir <- here(output_dir, "figures")
+tables_dir <- here(output_dir, "tables")
+```
+```{r load-functions}
+source(here(src_dir, "functions.R"))
+source(here(src_dir, "genes.R"))
+```
+```{r set-seed}
+reseed <- 42
+set.seed(seed = reseed)
+```
+```{r set-parallel-execution-plan}
+# available cores
+n_cores <- available_cores(prop2use = .5)
+# Parameters for parallel execution
+plan("multicore", workers = n_cores)
+options(
+  future.globals.maxSize = Inf,
+  future.rng.onMisuse = "ignore"
+)
+plan()
+```
+
+## Read data
+```{r load-data}
+rar2020_ages_all <- c("E15", "E17", "P00", "P02", "P10", "P23")
+rar2020_ages_postnat <- c("P02", "P10", "P23")
+samples_df <- read_tsv(here("data/samples.tsv"))
+colours_wtree <- setNames(
+  read_lines(here(data_dir, "colours_wtree.tsv")),
+  1:45
+)
+
+rar2020_srt_pub <-
+  readr::read_rds(file.path(data_dir, "oldCCA_nae_srt.rds"))
+rar2020_srt_pub %<>% UpdateSeuratObject()
+colnames(rar2020_srt_pub@reductions$umap@cell.embeddings) <-
+  c("UMAP_1", "UMAP_2")
+
+rar2020_srt_pub$orig.ident <-
+  rar2020_srt_pub %>%
+  colnames() %>%
+  str_split(pattern = ":", simplify = TRUE) %>%
+  .[, 1] %>%
+  plyr::mapvalues(
+    x = .,
+    from = samples_df$fullname,
+    to = samples_df$sample
+  )
+rar2020_srt_pub$age <-
+  plyr::mapvalues(
+    x = rar2020_srt_pub$orig.ident,
+    from = samples_df$sample,
+    to = samples_df$age
+  )
+Idents(rar2020_srt_pub) <- "wtree"
+neurons <-
+  subset(rar2020_srt_pub, idents = c("18", "32"))
+neurons <-
+  subset(neurons, subset = Slc17a6 == 0)
+onecut3 <-
+  subset(neurons,
+    subset = Onecut3 > 0 | Th > 0 | Ddc > 0 | Slc6a3 > 0
+  )
+
+onecut3 <-
+  Store_Palette_Seurat(
+    seurat_object = onecut3,
+    palette = rev(brewer.pal(n = 11, name = "Spectral")),
+    palette_name = "div_Colour_Pal"
+  )
+```
+
+Thus we subset the dataset to the neurons of interest from cluster 18, which are GABAergic and dopaminergic neurons expressing Onecut3 transcription factor. We also explicitly exclude Slc17a6-expressing neurons, which are glutamatergic neurons just in case to reduce noise. As the control group we use dopaminergic TIDA-neurons from the arcuate nucleus.
+
+
+## Derive and filter matrix of neurons of interest
+```{r derive-mtxs}
+mtx_oc3 <-
+  onecut3 %>%
+  GetAssayData("data", "RNA") %>%
+  as.data.frame() %>%
+  t()
+rownames(mtx_oc3) <- colnames(onecut3)
+
+# Filter features
+filt_low_genes <-
+  colSums(mtx_oc3) %>%
+  .[. > quantile(., 0.4)] %>%
+  names()
+mtx_oc3 %<>% .[, filt_low_genes]
+
+min_filt_vector <-
+  mtx_oc3 %>%
+  as_tibble() %>%
+  select(all_of(filt_low_genes)) %>%
+  summarise(across(.fns = ~ quantile(.x, .1))) %>%
+  as.list() %>%
+  map(as.double) %>%
+  simplify() %>%
+  .[colnames(mtx_oc3)]
+
+# Prepare table of intersection sets analysis
+content_mtx_oc3 <-
+  (mtx_oc3 > min_filt_vector) %>%
+  as_tibble() %>%
+  mutate_all(as.numeric)
+```
+
+## Plot UMAPs density
+
+```{r plt-init-umap-density-onecut3, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Onecut3"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Th, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Th"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Slc6a3, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Slc6a3"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Prlr, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Prlr"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Cnr1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Cnr1"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Gpr55, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Gpr55"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Mgll, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Mgll"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Dagla, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Dagla"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Daglb, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Daglb"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Faah, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Faah"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Napepld, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Napepld"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Gde1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Gde1"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Pparg, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Pparg"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-slc32a1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Slc32a1"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-gad1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Gad1"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-gad2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Custom(
+  seurat_object = onecut3,
+  features = c("Gad2"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+## Joint density UMAP's plots
+
+```{r plt-init-umap-density-Onecut3-Cnr1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Onecut3", "Cnr1"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Onecut3-Th, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Onecut3", "Th"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Cnr1-Th, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Cnr1", "Th"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Prlr-Cnr1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Prlr", "Cnr1"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Prlr-Th, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Prlr", "Th"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Prlr-Onecut3, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Prlr", "Onecut3"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Gpr55-Prlr, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Gpr55", "Prlr"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Gpr55-Cnr1, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Gpr55", "Cnr1"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Gpr55-Th, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Gpr55", "Th"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+```{r plt-init-umap-density-Gpr55-Onecut3, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
+Plot_Density_Joint_Only(
+  seurat_object = onecut3,
+  features = c("Gpr55", "Onecut3"),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)
+```
+
+
+## Correlation analysis visualisation between different genes
+```{r plot-correlation-scatter}
+p_corrs <- list(
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    x = Onecut3,
+    y = Cnr1,
+    xfill = "#ffc400",
+    yfill = "#e22ee2"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    x = Slc32a1,
+    y = Onecut3,
+    xfill = "#0000da",
+    yfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    x = Gpr55,
+    y = Onecut3,
+    xfill = "#006eff",
+    yfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    x = Slc32a1,
+    y = Cnr1,
+    xfill = "#0000da",
+    yfill = "#e22ee2"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    x = Gpr55,
+    y = Cnr1,
+    xfill = "#006eff",
+    yfill = "#e22ee2"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    x = Slc32a1,
+    y = Gpr55,
+    xfill = "#0000da",
+    yfill = "#006eff"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Slc32a1,
+    x = Onecut3,
+    yfill = "#0000da",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Gpr55,
+    x = Onecut3,
+    yfill = "#006eff",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Th,
+    x = Onecut3,
+    yfill = "#ff0000",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Gad1,
+    x = Onecut3,
+    yfill = "#a50202",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Gad2,
+    x = Onecut3,
+    yfill = "#4002a5",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Onecut2,
+    x = Onecut3,
+    yfill = "#6402a5",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Prlr,
+    x = Onecut3,
+    yfill = "#2502a5",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Ddc,
+    x = Onecut3,
+    yfill = "#4002a5",
+    xfill = "#ffc400"
+  ),
+  ggstatsplot::ggscatterstats(
+    as.data.frame(mtx_oc3),
+    y = Slc6a3,
+    x = Onecut3,
+    yfill = "#2502a5",
+    xfill = "#ffc400"
+  )
+)
+n_corrs <- list(
+  "oc3-rna-data-Onecut3-Cnr1",
+  "oc3-rna-data-Slc32a1-Onecut3",
+  "oc3-rna-data-Gpr55-Onecut3",
+  "oc3-rna-data-Slc32a1-Cnr1",
+  "oc3-rna-data-Gpr55-Cnr1",
+  "oc3-rna-data-Slc32a1-Gpr55",
+  "oc3-rna-data-Onecut3-Slc32a1",
+  "oc3-rna-data-Onecut3-Gpr55",
+  "oc3-rna-data-Onecut3-Th",
+  "oc3-rna-data-Onecut3-Gad1",
+  "oc3-rna-data-Onecut3-Gad2",
+  "oc3-rna-data-Onecut3-Onecut2",
+  "oc3-rna-data-Onecut3-Prlr",
+  "oc3-rna-data-Onecut3-Ddc",
+  "oc3-rna-data-Onecut3-Slc6a3"
+)
+
+walk2(n_corrs, p_corrs, save_my_plot, type = "stat-corr-plt")
+```
+
+### Visualise intersections sets that we are going to use (highlighted)
+
+```{r plot-upset-oc3}
+upset(
+  as.data.frame(content_mtx_oc3),
+  order.by = "freq",
+  sets.x.label = "Number of cells",
+  text.scale = c(2, 1.6, 2, 1.3, 2, 3),
+  nsets = 15,
+  sets = c("Th", "Onecut3"),
+  queries = list(
+    list(
+      query = intersects,
+      params = list("Onecut3"),
+      active = T
+    ),
+    list(
+      query = intersects,
+      params = list("Th"),
+      active = T
+    ),
+    list(
+      query = intersects,
+      params = list("Th", "Onecut3"),
+      active = T
+    )
+  ),
+  nintersects = 60,
+  empty.intersections = "on"
+)
+```
+
+```{r plot-upset-oc3-mod}
+upset(
+  as.data.frame(content_mtx_oc3),
+  order.by = "freq",
+  sets.x.label = "Number of cells",
+  text.scale = c(2, 1.6, 2, 1.3, 2, 3),
+  nsets = 15,
+  sets = c("Gpr55", "Cnr1", "Slc32a1", "Th"),
+  queries = list(
+    list(
+      query = intersects,
+      params = list("Gpr55", "Slc32a1"),
+      active = T
+    ),
+    list(
+      query = intersects,
+      params = list("Cnr1", "Th"),
+      active = T
+    )
+  ),
+  nintersects = 60,
+  empty.intersections = "on"
+)
+```
+
+Regroup factor by stages for more balanced groups
+```{r derive-stages}
+onecut3$age %>% forcats::fct_count()
+onecut3$stage <-
+  onecut3$age %>%
+  forcats::fct_collapse(
+    `Embrionic day 15` = "E15",
+    `Embrionic day 17` = "E17",
+    Neonatal = c("P00", "P02"),
+    Postnatal = c("P10", "P23")
+  )
+onecut3$stage %>% forcats::fct_count()
+```
+
+Make subset of stable neurons
+```{r derive-subset-def-cells}
+onecut3$gaba_status <-
+  content_mtx_oc3 %>%
+  select(Gad1, Gad2, Slc32a1) %>%
+  mutate(gaba = if_all(.fns = ~ .x > 0)) %>%
+  .$gaba
+
+onecut3$gaba_occurs <-
+  content_mtx_oc3 %>%
+  select(Gad1, Gad2, Slc32a1) %>%
+  mutate(gaba = if_any(.fns = ~ .x > 0)) %>%
+  .$gaba
+
+onecut3$th_status <-
+  content_mtx_oc3 %>%
+  select(Th, Ddc, Slc6a3) %>%
+  mutate(dopamin = if_any(.fns = ~ .x > 0)) %>%
+  .$dopamin
+
+oc3_fin <- onecut3
+```
+
+## Check contingency tables for neurotransmitter signature
+```{r check-contingency-neurotransmitter-test}
+oc3_fin@meta.data %>%
+  janitor::tabyl(th_status, gaba_status)
+```
+
+By age
+```{r check-contingency-neurotransmitter-age}
+oc3_fin@meta.data %>%
+  janitor::tabyl(age, th_status)
+```
+
+By stage
+```{r check-contingency-neurotransmitter-stage}
+oc3_fin@meta.data %>%
+  janitor::tabyl(stage, th_status)
+```
+
+Make splits of neurons by neurotransmitter signature
+```{r derive-subsets-by-neurotransmitter}
+oc3_fin$status <- oc3_fin$th_status %>%
+  if_else(true = "dopaminergic",
+    false = "GABAergic"
+  )
+Idents(oc3_fin) <- "status"
+SaveH5Seurat(
+  object    = oc3_fin,
+  filename  = here(data_dir, "oc3_fin"),
+  overwrite = TRUE,
+  verbose   = TRUE
+)
+
+## Split on basis of neurotrans and test for difference
+oc3_fin_neurotrans <- SplitObject(oc3_fin, split.by = "status")
+
+## Split on basis of age and test for difference
+oc3_fin_ages <- SplitObject(oc3_fin, split.by = "age")
+```
+
+## DotPlots grouped by age
+
+### Expression of GABA receptors in GABAergic Onecut3 positive cells
+```{r plot-dotplot-age-gabar-gaba}
+DotPlot(
+  object = oc3_fin_neurotrans$GABAergic,
+  features = gabar,
+  group.by = "age",
+  cols = c("#adffff", "#0084ff"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of GABA receptors in dopaminergic Onecut3 positive cells
+```{r plot-dotplot-age-gabar-dop}
+DotPlot(
+  object = oc3_fin_neurotrans$dopaminergic,
+  features = gabar,
+  group.by = "age",
+  cols = c("#ffc2c2", "#ff3c00"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of glutamate receptors in GABAergic Onecut3 positive cells
+```{r plot-dotplot-age-glur-gaba, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$GABAergic,
+  features = glutr,
+  group.by = "age",
+  cols = c("#adffff", "#0084ff"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+### Expression of glutamate receptors in dopaminergic Onecut3 positive cells
+
+```{r plot-dotplot-age-glur-dop, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$dopaminergic,
+  features = glutr,
+  group.by = "age",
+  cols = c("#ffc2c2", "#ff3c00"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+## DotPlots grouped by stage
+
+### Expression of GABA receptors in GABAergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-gabar-gaba}
+DotPlot(
+  object = oc3_fin_neurotrans$GABAergic,
+  features = gabar,
+  group.by = "stage",
+  cols = c("#adffff", "#0084ff"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of GABA receptors in dopaminergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-gabar-dop, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$dopaminergic,
+  features = gabar,
+  group.by = "stage",
+  cols = c("#ffc2c2", "#ff3c00"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of glutamate receptors in GABAergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-glur-gaba, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$GABAergic,
+  features = glutr,
+  group.by = "stage",
+  cols = c("#adffff", "#0084ff"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of glutamate receptors in dopaminergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-glur-dop, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$dopaminergic,
+  features = glutr,
+  group.by = "stage",
+  cols = c("#ffc2c2", "#ff3c00"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+
+### Expression of neuromodulators receptors in GABAergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-npr-gaba, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$GABAergic,
+  features = npr,
+  group.by = "stage",
+  cols = c("#adffff", "#0084ff"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of neuromodulators receptors in dopaminergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-npr-dop, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$dopaminergic,
+  features = npr,
+  group.by = "stage",
+  cols = c("#ffc2c2", "#ff3c00"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of endocannabinoids relevant genes in GABAergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-cnbn-gaba, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$GABAergic,
+  features = cnbn,
+  group.by = "stage",
+  cols = c("#adffff", "#0084ff"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+
+### Expression of endocannabinoids relevant genes in dopaminergic Onecut3 positive cells
+
+```{r plot-dotplot-stage-cnbn-dop, fig.height=5, fig.width=9}
+DotPlot(
+  object = oc3_fin_neurotrans$dopaminergic,
+  features = cnbn,
+  group.by = "stage",
+  cols = c("#ffc2c2", "#ff3c00"),
+  col.min = -1, col.max = 1
+) + RotatedAxis()
+```
+
+## Overrepresentation analysis
+
+
+```{r drv-sbs-mtx}
+Idents(oc3_fin) <- "status"
+
+sbs_mtx_oc <-
+  oc3_fin %>%
+  GetAssayData("data", "RNA") %>%
+  as.data.frame() %>%
+  t()
+rownames(sbs_mtx_oc) <- colnames(oc3_fin)
+
+# Filter features
+filt_low_genes2 <-
+  colSums(sbs_mtx_oc) %>%
+  .[. > quantile(., 0.4)] %>%
+  names()
+sbs_mtx_oc %<>% .[, filt_low_genes2]
+
+min_filt_vector2 <-
+  sbs_mtx_oc %>%
+  as_tibble() %>%
+  select(all_of(filt_low_genes2)) %>%
+  summarise(across(.fns = ~ quantile(.x, .005))) %>%
+  as.list() %>%
+  map(as.double) %>%
+  simplify() %>%
+  .[filt_low_genes2]
+
+# Prepare table of intersection sets analysis
+content_sbs_mtx_oc <-
+  (sbs_mtx_oc > min_filt_vector2) %>%
+  as_tibble() %>%
+  mutate_all(as.numeric)
+```
+
+```{r plot-upset-sbs-oc3}
+upset(
+  as.data.frame(content_sbs_mtx_oc),
+  order.by = "freq",
+  sets.x.label = "Number of cells",
+  text.scale = c(2, 1.6, 2, 1.3, 2, 3),
+  nsets = 15,
+  sets = c(
+    "Gad1", "Gad2", "Slc32a1",
+    "Th", "Onecut3",
+    cnbn, "Prlr"
+  ) %>%
+    .[. %in% colnames(content_sbs_mtx_oc)],
+  nintersects = 20,
+  empty.intersections = NULL
+)
+```
+
+```{r plot-upset-sbs-oc3-mod}
+upset(
+  as.data.frame(content_sbs_mtx_oc),
+  order.by = "freq",
+  sets.x.label = "Number of cells",
+  text.scale = c(2, 1.6, 2, 1.3, 2, 3),
+  nsets = 15,
+  sets = c(cnbn, "Prlr", "Slc32a1", "Th", "Onecut3") %>%
+    .[. %in% colnames(content_sbs_mtx_oc)],
+  nintersects = 10,
+  empty.intersections = NULL
+)
+```
+
+```{r plot-piecharts-sbs-oc3-chisqr, fig.height=10, fig.width=12}
+sbs_mtx_oc_full <- content_sbs_mtx_oc |>
+  select(any_of(c(
+    neurotrans, cnbn, "Prlr", "Cnr1", "Gpr55", "Onecut3"
+  ))) |>
+  dplyr::bind_cols(oc3_fin@meta.data)
+
+sbs_mtx_oc_full |> glimpse()
+
+sbs_mtx_oc_full$modulator <-
+  sbs_mtx_oc_full %>%
+  select(Cnr1, Gpr55) %>%
+  mutate(modulator = if_any(.fns = ~ .x > 0)) %>%
+  .$modulator
+
+sbs_mtx_oc_full$oc3 <-
+  (sbs_mtx_oc_full$Onecut3 > 0)
+
+library(ggstatsplot)
+# for reproducibility
+set.seed(123)
+
+# plot
+grouped_ggpiestats(
+  # arguments relevant for `ggpiestats()`
+  data = sbs_mtx_oc_full,
+  x = modulator,
+  y = oc3,
+  grouping.var = status,
+  perc.k = 1,
+  package = "ggsci",
+  palette = "category10_d3",
+  # arguments relevant for `combine_plots()`
+  title.text = "Neuromodulator specification of onecut-driven hypothalamic neuronal lineages by Onecut3 and main neurotransmitter expression",
+  caption.text = "Asterisks denote results from proportion tests; \n***: p < 0.001, ns: non-significant",
+  plotgrid.args = list(nrow = 2)
+)
+```
