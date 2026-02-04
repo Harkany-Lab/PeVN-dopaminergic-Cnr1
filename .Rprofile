@@ -1,3 +1,4 @@
+.libPaths(c("/Users/etretiakov/R/library", .libPaths()))
 ## This makes sure that R loads the workflowr package
 ## automatically, everytime the project is loaded
 if (requireNamespace("workflowr", quietly = TRUE)) {

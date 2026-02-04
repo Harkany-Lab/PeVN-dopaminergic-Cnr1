@@ -11,11 +11,11 @@
 
 <meta name="author" content="Evgenii Tretiakov" />
 
-<meta name="date" content="2023-05-29" />
+<meta name="date" content="2026-02-04" />
 
 <title>Exploratory analysis of Cnr1 in mouse Onecut3-GABAergic and dopaminergic hypothalamic neurons during development</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -40,8 +40,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -382,7 +382,7 @@ div.tocify {
 Onecut3-GABAergic and dopaminergic hypothalamic neurons during
 development</h1>
 <h4 class="author">Evgenii Tretiakov</h4>
-<h4 class="date">2023-05-29</h4>
+<h4 class="date">2026-02-04</h4>
 
 </div>
 
@@ -390,7 +390,7 @@ development</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -401,8 +401,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -411,13 +411,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-05-29
+<strong>Last updated:</strong> 2026-02-04
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>PeVN-dopaminergic-Cnr1/</code>
@@ -429,7 +429,7 @@ title="This is the local directory in which the code in this file was executed."
 This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
 analysis was created with <a
   href="https://github.com/workflowr/workflowr">workflowr</a> (version
-1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+1.7.2). The <em>Checks</em> tab describes the reproducibility checks
 that were applied when the results were created. The <em>Past
 versions</em> tab lists the development history.
 </p>
@@ -440,18 +440,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -542,15 +545,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1tree62b0185ffbc7639fdf33ce8d190f155d270f0e34targetblank62b0185a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1treed07340da305712afa0ef63a3d20e2fe798f25192targetblankd07340da">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/62b0185ffbc7639fdf33ce8d190f155d270f0e34" target="_blank">62b0185</a>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/d07340da305712afa0ef63a3d20e2fe798f25192" target="_blank">d07340d</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1tree62b0185ffbc7639fdf33ce8d190f155d270f0e34targetblank62b0185a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomHarkanyLabPeVNdopaminergicCnr1treed07340da305712afa0ef63a3d20e2fe798f25192targetblankd07340da"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -560,7 +563,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/62b0185ffbc7639fdf33ce8d190f155d270f0e34" target="_blank">62b0185</a>.
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/tree/d07340da305712afa0ef63a3d20e2fe798f25192" target="_blank">d07340d</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -575,7 +578,14 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    output/tables/
+    Ignored:    .DS_Store
+    Ignored:    analysis/.DS_Store
+    Ignored:    analysis/figure/
+    Ignored:    output/.DS_Store
+
+Unstaged changes:
+    Modified:   .Rprofile
+    Modified:   analysis/eda.Rmd
 
 </code></pre>
 <p>
@@ -590,7 +600,6 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
 These are the previous versions of the repository in which changes were
 made to the R Markdown (<code>analysis/eda.Rmd</code>) and HTML
@@ -620,6 +629,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/analysis/eda.Rmd" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+<td>
+feat(gene): add missed Cnr2
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/4cd85372238f7da4a30af00055eb63e0c8a7bb4c/docs/eda.html" target="_blank">4cd8537</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -705,15 +748,11 @@ library(zeallot)
 library(future)
 
 # Load packages for scRNA-seq analysis and visualisation
-library(sctransform)
 library(Seurat)
-library(SeuratWrappers)
 library(SeuratDisk)
-library(scCustomize)
 library(UpSetR)
 library(patchwork)
-library(RColorBrewer)
-library(Nebulosa)</code></pre>
+library(RColorBrewer)</code></pre>
 <pre class="r"><code>src_dir &lt;- here(&quot;code&quot;)
 data_dir &lt;- here(&quot;data&quot;)
 output_dir &lt;- here(&quot;output&quot;)
@@ -723,19 +762,18 @@ tables_dir &lt;- here(output_dir, &quot;tables&quot;)</code></pre>
 source(here(src_dir, &quot;genes.R&quot;))</code></pre>
 <pre class="r"><code>reseed &lt;- 42
 set.seed(seed = reseed)</code></pre>
-<pre class="r"><code># available cores
-n_cores &lt;- available_cores(prop2use = .5)
-# Parameters for parallel execution
-plan(&quot;multicore&quot;, workers = n_cores)
+<pre class="r"><code># Keep execution sequential to avoid large memory spikes during rendering.
+plan(&quot;sequential&quot;)
 options(
   future.globals.maxSize = Inf,
   future.rng.onMisuse = &quot;ignore&quot;
 )
 plan()</code></pre>
-<pre><code>multicore:
-- args: function (..., workers = 16, envir = parent.frame())
-- tweaked: TRUE
-- call: plan(&quot;multicore&quot;, workers = n_cores)</code></pre>
+<pre><code>sequential:
+- args: function (..., envir = parent.frame(), workers = &quot;&lt;NULL&gt;&quot;)
+- tweaked: FALSE
+- call: plan(sequential)
+FutureBackend to be launched</code></pre>
 <div id="read-data" class="section level2">
 <h2>Read data</h2>
 <pre class="r"><code>rar2020_ages_all &lt;- c(&quot;E15&quot;, &quot;E17&quot;, &quot;P00&quot;, &quot;P02&quot;, &quot;P10&quot;, &quot;P23&quot;)
@@ -796,35 +834,28 @@ nucleus.</p>
 <div id="derive-and-filter-matrix-of-neurons-of-interest"
 class="section level2">
 <h2>Derive and filter matrix of neurons of interest</h2>
-<pre class="r"><code>mtx_oc3 &lt;-
+<pre class="r"><code>oc3_genes &lt;- unique(c(
+  &quot;Onecut3&quot;, &quot;Cnr1&quot;, &quot;Cnr2&quot;, &quot;Slc32a1&quot;, &quot;Gpr55&quot;, &quot;Th&quot;,
+  &quot;Gad1&quot;, &quot;Gad2&quot;, &quot;Onecut2&quot;, &quot;Prlr&quot;, &quot;Ddc&quot;, &quot;Slc6a3&quot;
+))
+
+mtx_oc3 &lt;-
   onecut3 %&gt;%
-  GetAssayData(&quot;data&quot;, &quot;RNA&quot;) %&gt;%
-  as.data.frame() %&gt;%
+  GetAssayData(assay = &quot;RNA&quot;, layer = &quot;data&quot;) %&gt;%
+  .[oc3_genes, , drop = FALSE] %&gt;%
+  as.matrix() %&gt;%
   t()
 rownames(mtx_oc3) &lt;- colnames(onecut3)
 
-# Filter features
-filt_low_genes &lt;-
-  colSums(mtx_oc3) %&gt;%
-  .[. &gt; quantile(., 0.4)] %&gt;%
-  names()
-mtx_oc3 %&lt;&gt;% .[, filt_low_genes]
-
-min_filt_vector &lt;-
-  mtx_oc3 %&gt;%
-  as_tibble() %&gt;%
-  select(all_of(filt_low_genes)) %&gt;%
-  summarise(across(.fns = ~ quantile(.x, .1))) %&gt;%
-  as.list() %&gt;%
-  map(as.double) %&gt;%
-  simplify() %&gt;%
-  .[colnames(mtx_oc3)]
+min_filt_vector &lt;- apply(mtx_oc3, 2, quantile, probs = 0.1)
 
 # Prepare table of intersection sets analysis
 content_mtx_oc3 &lt;-
   (mtx_oc3 &gt; min_filt_vector) %&gt;%
   as_tibble() %&gt;%
-  mutate_all(as.numeric)</code></pre>
+  mutate_all(as.numeric)
+
+mtx_oc3_df &lt;- as.data.frame(mtx_oc3)</code></pre>
 </div>
 <div id="plot-umaps-density" class="section level2">
 <h2>Plot UMAPs density</h2>
@@ -833,7 +864,7 @@ content_mtx_oc3 &lt;-
   features = c(&quot;Onecut3&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-onecut3-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-onecut3-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-onecut3-1">
 Past versions of plt-init-umap-density-onecut3-1.png
@@ -858,6 +889,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-onecut3-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-onecut3-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -876,7 +918,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Th&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Th-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Th-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Th-1">
 Past versions of plt-init-umap-density-Th-1.png
@@ -901,6 +943,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Th-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Th-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -919,7 +972,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Slc6a3&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Slc6a3-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Slc6a3-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Slc6a3-1">
 Past versions of plt-init-umap-density-Slc6a3-1.png
@@ -944,6 +997,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Slc6a3-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Slc6a3-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -962,7 +1026,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Prlr&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Prlr-1">
 Past versions of plt-init-umap-density-Prlr-1.png
@@ -987,6 +1051,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1005,7 +1080,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Cnr1&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Cnr1-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Cnr1-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Cnr1-1">
 Past versions of plt-init-umap-density-Cnr1-1.png
@@ -1030,6 +1105,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Cnr1-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Cnr1-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1045,10 +1131,94 @@ Evgenii O. Tretiakov
 </div>
 <pre class="r"><code>Plot_Density_Custom(
   seurat_object = onecut3,
+  features = c(&quot;Cnr2&quot;),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)</code></pre>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Cnr2-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Cnr2-1">
+Past versions of plt-init-umap-density-Cnr2-1.png
+</button>
+</p>
+<div id="fig-plt-init-umap-density-Cnr2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Cnr2-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cnr2-expression-sanity-check" class="section level2">
+<h2>Cnr2 expression sanity check</h2>
+<pre class="r"><code>cnr2_expr &lt;- NULL
+rna_data &lt;- Seurat::GetAssayData(onecut3, assay = &quot;RNA&quot;, layer = &quot;data&quot;)
+if (&quot;Cnr2&quot; %in% rownames(rna_data)) {
+  cnr2_expr &lt;- rna_data[&quot;Cnr2&quot;, ]
+} else {
+  cnr2_expr &lt;- rep(0, ncol(onecut3))
+  message(&quot;Cnr2 not present in RNA assay; treating as zero.&quot;)
+}
+
+cnr2_df &lt;- tibble::tibble(expr = as.numeric(cnr2_expr))
+cnr2_summary &lt;- cnr2_df %&gt;%
+  summarise(
+    n = n(),
+    n_expressed = sum(expr &gt; 0),
+    pct_expressed = 100 * mean(expr &gt; 0),
+    max_expr = max(expr)
+  )
+cnr2_summary</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["n"],"name":[1],"type":["int"],"align":["right"]},{"label":["n_expressed"],"name":[2],"type":["int"],"align":["right"]},{"label":["pct_expressed"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["max_expr"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"401","2":"0","3":"0","4":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>ggplot(cnr2_df, aes(x = expr)) +
+  geom_histogram(binwidth = 0.05, fill = &quot;#a840ff&quot;, color = &quot;white&quot;) +
+  geom_vline(xintercept = 0, linetype = &quot;dashed&quot;, color = &quot;black&quot;) +
+  labs(
+    title = &quot;Cnr2 expression in Onecut3 cells&quot;,
+    subtitle = sprintf(
+      &quot;Cells &gt; 0: %s (%.2f%%)&quot;,
+      cnr2_summary$n_expressed,
+      cnr2_summary$pct_expressed
+    ),
+    x = &quot;log-normalized expression&quot;,
+    y = &quot;Cells&quot;
+  ) +
+  theme_minimal(base_size = 12)</code></pre>
+<p><img src="figure/eda.Rmd/plot-cnr2-expression-1.png" alt="" width="576" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>Plot_Density_Custom(
+  seurat_object = onecut3,
   features = c(&quot;Gpr55&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Gpr55-1">
 Past versions of plt-init-umap-density-Gpr55-1.png
@@ -1073,6 +1243,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1091,7 +1272,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Mgll&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Mgll-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Mgll-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Mgll-1">
 Past versions of plt-init-umap-density-Mgll-1.png
@@ -1116,6 +1297,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Mgll-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Mgll-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1134,7 +1326,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Dagla&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Dagla-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Dagla-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Dagla-1">
 Past versions of plt-init-umap-density-Dagla-1.png
@@ -1159,6 +1351,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Dagla-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Dagla-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1177,7 +1380,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Daglb&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Daglb-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Daglb-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Daglb-1">
 Past versions of plt-init-umap-density-Daglb-1.png
@@ -1202,6 +1405,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Daglb-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Daglb-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1220,7 +1434,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Faah&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Faah-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Faah-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Faah-1">
 Past versions of plt-init-umap-density-Faah-1.png
@@ -1245,6 +1459,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Faah-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Faah-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1263,7 +1488,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Napepld&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Napepld-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Napepld-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Napepld-1">
 Past versions of plt-init-umap-density-Napepld-1.png
@@ -1288,6 +1513,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Napepld-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Napepld-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1306,7 +1542,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Gde1&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Gde1-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Gde1-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Gde1-1">
 Past versions of plt-init-umap-density-Gde1-1.png
@@ -1331,6 +1567,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Gde1-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Gde1-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1349,7 +1596,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Pparg&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Pparg-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Pparg-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Pparg-1">
 Past versions of plt-init-umap-density-Pparg-1.png
@@ -1374,6 +1621,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Pparg-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Pparg-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1392,7 +1650,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Slc32a1&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-slc32a1-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-slc32a1-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-slc32a1-1">
 Past versions of plt-init-umap-density-slc32a1-1.png
@@ -1417,6 +1675,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-slc32a1-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-slc32a1-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1435,7 +1704,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Gad1&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-gad1-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-gad1-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-gad1-1">
 Past versions of plt-init-umap-density-gad1-1.png
@@ -1460,6 +1729,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-gad1-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-gad1-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1478,7 +1758,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Gad2&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-gad2-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-gad2-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-gad2-1">
 Past versions of plt-init-umap-density-gad2-1.png
@@ -1503,6 +1783,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-gad2-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-gad2-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1524,7 +1815,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Onecut3&quot;, &quot;Cnr1&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Onecut3-Cnr1-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Onecut3-Cnr1-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Onecut3-Cnr1-1">
 Past versions of plt-init-umap-density-Onecut3-Cnr1-1.png
@@ -1549,6 +1840,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Onecut3-Cnr1-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Onecut3-Cnr1-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1564,10 +1866,53 @@ Evgenii O. Tretiakov
 </div>
 <pre class="r"><code>Plot_Density_Joint_Only(
   seurat_object = onecut3,
+  features = c(&quot;Onecut3&quot;, &quot;Cnr2&quot;),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)</code></pre>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Onecut3-Cnr2-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Onecut3-Cnr2-1">
+Past versions of plt-init-umap-density-Onecut3-Cnr2-1.png
+</button>
+</p>
+<div id="fig-plt-init-umap-density-Onecut3-Cnr2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Onecut3-Cnr2-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>Plot_Density_Joint_Only(
+  seurat_object = onecut3,
   features = c(&quot;Onecut3&quot;, &quot;Th&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Onecut3-Th-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Onecut3-Th-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Onecut3-Th-1">
 Past versions of plt-init-umap-density-Onecut3-Th-1.png
@@ -1592,6 +1937,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Onecut3-Th-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Onecut3-Th-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1610,7 +1966,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Cnr1&quot;, &quot;Th&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Cnr1-Th-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Cnr1-Th-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Cnr1-Th-1">
 Past versions of plt-init-umap-density-Cnr1-Th-1.png
@@ -1635,6 +1991,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Cnr1-Th-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Cnr1-Th-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1650,10 +2017,53 @@ Evgenii O. Tretiakov
 </div>
 <pre class="r"><code>Plot_Density_Joint_Only(
   seurat_object = onecut3,
+  features = c(&quot;Cnr2&quot;, &quot;Th&quot;),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)</code></pre>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Cnr2-Th-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Cnr2-Th-1">
+Past versions of plt-init-umap-density-Cnr2-Th-1.png
+</button>
+</p>
+<div id="fig-plt-init-umap-density-Cnr2-Th-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Cnr2-Th-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>Plot_Density_Joint_Only(
+  seurat_object = onecut3,
   features = c(&quot;Prlr&quot;, &quot;Cnr1&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-Cnr1-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-Cnr1-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Prlr-Cnr1-1">
 Past versions of plt-init-umap-density-Prlr-Cnr1-1.png
@@ -1678,6 +2088,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-Cnr1-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-Cnr1-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1693,10 +2114,53 @@ Evgenii O. Tretiakov
 </div>
 <pre class="r"><code>Plot_Density_Joint_Only(
   seurat_object = onecut3,
+  features = c(&quot;Prlr&quot;, &quot;Cnr2&quot;),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)</code></pre>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-Cnr2-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Prlr-Cnr2-1">
+Past versions of plt-init-umap-density-Prlr-Cnr2-1.png
+</button>
+</p>
+<div id="fig-plt-init-umap-density-Prlr-Cnr2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-Cnr2-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>Plot_Density_Joint_Only(
+  seurat_object = onecut3,
   features = c(&quot;Prlr&quot;, &quot;Th&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-Th-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-Th-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Prlr-Th-1">
 Past versions of plt-init-umap-density-Prlr-Th-1.png
@@ -1721,6 +2185,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-Th-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-Th-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1739,7 +2214,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Prlr&quot;, &quot;Onecut3&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-Onecut3-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Prlr-Onecut3-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Prlr-Onecut3-1">
 Past versions of plt-init-umap-density-Prlr-Onecut3-1.png
@@ -1764,6 +2239,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-Onecut3-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Prlr-Onecut3-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1782,7 +2268,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Gpr55&quot;, &quot;Prlr&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Prlr-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Prlr-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Gpr55-Prlr-1">
 Past versions of plt-init-umap-density-Gpr55-Prlr-1.png
@@ -1807,6 +2293,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Prlr-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Prlr-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1825,7 +2322,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Gpr55&quot;, &quot;Cnr1&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Cnr1-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Cnr1-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Gpr55-Cnr1-1">
 Past versions of plt-init-umap-density-Gpr55-Cnr1-1.png
@@ -1850,6 +2347,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Cnr1-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Cnr1-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1865,10 +2373,53 @@ Evgenii O. Tretiakov
 </div>
 <pre class="r"><code>Plot_Density_Joint_Only(
   seurat_object = onecut3,
+  features = c(&quot;Gpr55&quot;, &quot;Cnr2&quot;),
+  custom_palette = onecut3@misc$div_Colour_Pal
+)</code></pre>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Cnr2-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Gpr55-Cnr2-1">
+Past versions of plt-init-umap-density-Gpr55-Cnr2-1.png
+</button>
+</p>
+<div id="fig-plt-init-umap-density-Gpr55-Cnr2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Cnr2-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>Plot_Density_Joint_Only(
+  seurat_object = onecut3,
   features = c(&quot;Gpr55&quot;, &quot;Th&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Th-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Th-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Gpr55-Th-1">
 Past versions of plt-init-umap-density-Gpr55-Th-1.png
@@ -1893,6 +2444,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Th-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Th-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1911,7 +2473,7 @@ Evgenii O. Tretiakov
   features = c(&quot;Gpr55&quot;, &quot;Onecut3&quot;),
   custom_palette = onecut3@misc$div_Colour_Pal
 )</code></pre>
-<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Onecut3-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plt-init-umap-density-Gpr55-Onecut3-1.png" alt="" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plt-init-umap-density-Gpr55-Onecut3-1">
 Past versions of plt-init-umap-density-Gpr55-Onecut3-1.png
@@ -1936,6 +2498,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Onecut3-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plt-init-umap-density-Gpr55-Onecut3-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -1954,106 +2527,127 @@ Evgenii O. Tretiakov
 class="section level2">
 <h2>Correlation analysis visualisation between different genes</h2>
 <pre class="r"><code>p_corrs &lt;- list(
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     x = Onecut3,
     y = Cnr1,
     xfill = &quot;#ffc400&quot;,
     yfill = &quot;#e22ee2&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
+    x = Onecut3,
+    y = Cnr2,
+    xfill = &quot;#ffc400&quot;,
+    yfill = &quot;#a840ff&quot;
+  ),
+  plot_scatter_stats(
+    mtx_oc3_df,
     x = Slc32a1,
     y = Onecut3,
     xfill = &quot;#0000da&quot;,
     yfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     x = Gpr55,
     y = Onecut3,
     xfill = &quot;#006eff&quot;,
     yfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     x = Slc32a1,
     y = Cnr1,
     xfill = &quot;#0000da&quot;,
     yfill = &quot;#e22ee2&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
+    x = Slc32a1,
+    y = Cnr2,
+    xfill = &quot;#0000da&quot;,
+    yfill = &quot;#a840ff&quot;
+  ),
+  plot_scatter_stats(
+    mtx_oc3_df,
     x = Gpr55,
     y = Cnr1,
     xfill = &quot;#006eff&quot;,
     yfill = &quot;#e22ee2&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
+    x = Gpr55,
+    y = Cnr2,
+    xfill = &quot;#006eff&quot;,
+    yfill = &quot;#a840ff&quot;
+  ),
+  plot_scatter_stats(
+    mtx_oc3_df,
     x = Slc32a1,
     y = Gpr55,
     xfill = &quot;#0000da&quot;,
     yfill = &quot;#006eff&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Slc32a1,
     x = Onecut3,
     yfill = &quot;#0000da&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Gpr55,
     x = Onecut3,
     yfill = &quot;#006eff&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Th,
     x = Onecut3,
     yfill = &quot;#ff0000&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Gad1,
     x = Onecut3,
     yfill = &quot;#a50202&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Gad2,
     x = Onecut3,
     yfill = &quot;#4002a5&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Onecut2,
     x = Onecut3,
     yfill = &quot;#6402a5&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Prlr,
     x = Onecut3,
     yfill = &quot;#2502a5&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Ddc,
     x = Onecut3,
     yfill = &quot;#4002a5&quot;,
     xfill = &quot;#ffc400&quot;
   ),
-  ggstatsplot::ggscatterstats(
-    as.data.frame(mtx_oc3),
+  plot_scatter_stats(
+    mtx_oc3_df,
     y = Slc6a3,
     x = Onecut3,
     yfill = &quot;#2502a5&quot;,
@@ -2062,10 +2656,13 @@ class="section level2">
 )
 n_corrs &lt;- list(
   &quot;oc3-rna-data-Onecut3-Cnr1&quot;,
+  &quot;oc3-rna-data-Onecut3-Cnr2&quot;,
   &quot;oc3-rna-data-Slc32a1-Onecut3&quot;,
   &quot;oc3-rna-data-Gpr55-Onecut3&quot;,
   &quot;oc3-rna-data-Slc32a1-Cnr1&quot;,
+  &quot;oc3-rna-data-Slc32a1-Cnr2&quot;,
   &quot;oc3-rna-data-Gpr55-Cnr1&quot;,
+  &quot;oc3-rna-data-Gpr55-Cnr2&quot;,
   &quot;oc3-rna-data-Slc32a1-Gpr55&quot;,
   &quot;oc3-rna-data-Onecut3-Slc32a1&quot;,
   &quot;oc3-rna-data-Onecut3-Gpr55&quot;,
@@ -2111,7 +2708,7 @@ class="section level3">
   nintersects = 60,
   empty.intersections = &quot;on&quot;
 )</code></pre>
-<p><img src="figure/eda.Rmd/plot-upset-oc3-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-upset-oc3-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-upset-oc3-1">
 Past versions of plot-upset-oc3-1.png
@@ -2136,6 +2733,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plot-upset-oc3-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-upset-oc3-1.png" target="_blank">aaece06</a>
 </td>
 <td>
@@ -2155,7 +2763,7 @@ Evgenii O. Tretiakov
   sets.x.label = &quot;Number of cells&quot;,
   text.scale = c(2, 1.6, 2, 1.3, 2, 3),
   nsets = 15,
-  sets = c(&quot;Gpr55&quot;, &quot;Cnr1&quot;, &quot;Slc32a1&quot;, &quot;Th&quot;),
+  sets = c(&quot;Gpr55&quot;, &quot;Cnr1&quot;, &quot;Cnr2&quot;, &quot;Slc32a1&quot;, &quot;Th&quot;),
   queries = list(
     list(
       query = intersects,
@@ -2171,7 +2779,7 @@ Evgenii O. Tretiakov
   nintersects = 60,
   empty.intersections = &quot;on&quot;
 )</code></pre>
-<p><img src="figure/eda.Rmd/plot-upset-oc3-mod-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-upset-oc3-mod-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-upset-oc3-mod-1">
 Past versions of plot-upset-oc3-mod-1.png
@@ -2194,6 +2802,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/d07340da305712afa0ef63a3d20e2fe798f25192/docs/figure/eda.Rmd/plot-upset-oc3-mod-1.png" target="_blank">d07340d</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2026-02-04
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/aaece06afa65f79fbf6f204a2eec4c5051617a5c/docs/figure/eda.Rmd/plot-upset-oc3-mod-1.png" target="_blank">aaece06</a>
@@ -2284,11 +2903,16 @@ class="section level2">
     false = &quot;GABAergic&quot;
   )
 Idents(oc3_fin) &lt;- &quot;status&quot;
-SaveH5Seurat(
-  object    = oc3_fin,
-  filename  = here(data_dir, &quot;oc3_fin&quot;),
-  overwrite = TRUE,
-  verbose   = TRUE
+tryCatch(
+  SaveH5Seurat(
+    object    = oc3_fin,
+    filename  = here(data_dir, &quot;oc3_fin&quot;),
+    overwrite = TRUE,
+    verbose   = TRUE
+  ),
+  error = function(e) {
+    message(&quot;SaveH5Seurat skipped: &quot;, e$message)
+  }
 )
 
 ## Split on basis of neurotrans and test for difference
@@ -2311,7 +2935,7 @@ cells</h3>
   cols = c(&quot;#adffff&quot;, &quot;#0084ff&quot;),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-age-gabar-gaba-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-age-gabar-gaba-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-age-gabar-gaba-1">
 Past versions of plot-dotplot-age-gabar-gaba-1.png
@@ -2362,7 +2986,7 @@ positive cells</h3>
   split.by = &quot;celltype&quot;,
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-age-gabar-dop-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-age-gabar-dop-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-age-gabar-dop-1">
 Past versions of plot-dotplot-age-gabar-dop-1.png
@@ -2385,6 +3009,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/4cd85372238f7da4a30af00055eb63e0c8a7bb4c/docs/figure/eda.Rmd/plot-dotplot-age-gabar-dop-1.png" target="_blank">4cd8537</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-age-gabar-dop-1.png" target="_blank">62b0185</a>
@@ -2424,7 +3059,7 @@ cells</h3>
   cols = c(&quot;#adffff&quot;, &quot;#0084ff&quot;),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-age-glur-gaba-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-age-glur-gaba-1.png" alt="" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-age-glur-gaba-1">
 Past versions of plot-dotplot-age-glur-gaba-1.png
@@ -2475,7 +3110,7 @@ positive cells</h3>
   split.by = &quot;celltype&quot;,
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-age-glur-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-age-glur-dop-1.png" alt="" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-age-glur-dop-1">
 Past versions of plot-dotplot-age-glur-dop-1.png
@@ -2498,6 +3133,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/4cd85372238f7da4a30af00055eb63e0c8a7bb4c/docs/figure/eda.Rmd/plot-dotplot-age-glur-dop-1.png" target="_blank">4cd8537</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-age-glur-dop-1.png" target="_blank">62b0185</a>
@@ -2540,7 +3186,7 @@ cells</h3>
   cols = c(&quot;#adffff&quot;, &quot;#0084ff&quot;),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-gabar-gaba-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-gabar-gaba-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-gabar-gaba-1">
 Past versions of plot-dotplot-stage-gabar-gaba-1.png
@@ -2591,7 +3237,7 @@ positive cells</h3>
   split.by = &quot;celltype&quot;,
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-gabar-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-gabar-dop-1.png" alt="" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-gabar-dop-1">
 Past versions of plot-dotplot-stage-gabar-dop-1.png
@@ -2614,6 +3260,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/4cd85372238f7da4a30af00055eb63e0c8a7bb4c/docs/figure/eda.Rmd/plot-dotplot-stage-gabar-dop-1.png" target="_blank">4cd8537</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-gabar-dop-1.png" target="_blank">62b0185</a>
@@ -2653,7 +3310,7 @@ cells</h3>
   cols = c(&quot;#adffff&quot;, &quot;#0084ff&quot;),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-glur-gaba-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-glur-gaba-1.png" alt="" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-glur-gaba-1">
 Past versions of plot-dotplot-stage-glur-gaba-1.png
@@ -2704,7 +3361,7 @@ positive cells</h3>
   split.by = &quot;celltype&quot;,
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-glur-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-glur-dop-1.png" alt="" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-glur-dop-1">
 Past versions of plot-dotplot-stage-glur-dop-1.png
@@ -2727,6 +3384,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/4cd85372238f7da4a30af00055eb63e0c8a7bb4c/docs/figure/eda.Rmd/plot-dotplot-stage-glur-dop-1.png" target="_blank">4cd8537</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-glur-dop-1.png" target="_blank">62b0185</a>
@@ -2766,7 +3434,7 @@ positive cells</h3>
   cols = c(&quot;#adffff&quot;, &quot;#0084ff&quot;),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-npr-gaba-1.png" width="1440" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-npr-gaba-1.png" alt="" width="1440" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-npr-gaba-1">
 Past versions of plot-dotplot-stage-npr-gaba-1.png
@@ -2828,7 +3496,7 @@ Onecut3 positive cells</h3>
   split.by = &quot;celltype&quot;,
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-npr-dop-1.png" width="1536" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-npr-dop-1.png" alt="" width="1536" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-npr-dop-1">
 Past versions of plot-dotplot-stage-npr-dop-1.png
@@ -2851,6 +3519,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/4cd85372238f7da4a30af00055eb63e0c8a7bb4c/docs/figure/eda.Rmd/plot-dotplot-stage-npr-dop-1.png" target="_blank">4cd8537</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-npr-dop-1.png" target="_blank">62b0185</a>
@@ -2890,7 +3569,7 @@ positive cells</h3>
   cols = c(&quot;#adffff&quot;, &quot;#0084ff&quot;),
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-cnbn-gaba-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-cnbn-gaba-1.png" alt="" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-cnbn-gaba-1">
 Past versions of plot-dotplot-stage-cnbn-gaba-1.png
@@ -2941,7 +3620,7 @@ or Onecut3 positive cells</h3>
   split.by = &quot;celltype&quot;,
   col.min = -1, col.max = 1
 ) + RotatedAxis()</code></pre>
-<p><img src="figure/eda.Rmd/plot-dotplot-stage-cnbn-dop-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-dotplot-stage-cnbn-dop-1.png" alt="" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-dotplot-stage-cnbn-dop-1">
 Past versions of plot-dotplot-stage-cnbn-dop-1.png
@@ -2964,6 +3643,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/4cd85372238f7da4a30af00055eb63e0c8a7bb4c/docs/figure/eda.Rmd/plot-dotplot-stage-cnbn-dop-1.png" target="_blank">4cd8537</a>
+</td>
+<td>
+Evgenii O. Tretiakov
+</td>
+<td>
+2023-05-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/Harkany-Lab/PeVN-dopaminergic-Cnr1/blob/62b0185ffbc7639fdf33ce8d190f155d270f0e34/docs/figure/eda.Rmd/plot-dotplot-stage-cnbn-dop-1.png" target="_blank">62b0185</a>
@@ -2998,27 +3688,13 @@ Evgenii O. Tretiakov
 
 sbs_mtx_oc &lt;-
   oc3_fin %&gt;%
-  GetAssayData(&quot;data&quot;, &quot;RNA&quot;) %&gt;%
-  as.data.frame() %&gt;%
+  GetAssayData(assay = &quot;RNA&quot;, layer = &quot;data&quot;) %&gt;%
+  .[unique(c(neurotrans, cnbn, &quot;Prlr&quot;, &quot;Onecut3&quot;, &quot;Th&quot;)), , drop = FALSE] %&gt;%
+  as.matrix() %&gt;%
   t()
 rownames(sbs_mtx_oc) &lt;- colnames(oc3_fin)
 
-# Filter features
-filt_low_genes2 &lt;-
-  colSums(sbs_mtx_oc) %&gt;%
-  .[. &gt; quantile(., 0.4)] %&gt;%
-  names()
-sbs_mtx_oc %&lt;&gt;% .[, filt_low_genes2]
-
-min_filt_vector2 &lt;-
-  sbs_mtx_oc %&gt;%
-  as_tibble() %&gt;%
-  select(all_of(filt_low_genes2)) %&gt;%
-  summarise(across(.fns = ~ quantile(.x, .005))) %&gt;%
-  as.list() %&gt;%
-  map(as.double) %&gt;%
-  simplify() %&gt;%
-  .[filt_low_genes2]
+min_filt_vector2 &lt;- apply(sbs_mtx_oc, 2, quantile, probs = 0.005)
 
 # Prepare table of intersection sets analysis
 content_sbs_mtx_oc &lt;-
@@ -3039,7 +3715,7 @@ content_sbs_mtx_oc &lt;-
   nintersects = 20,
   empty.intersections = NULL
 )</code></pre>
-<p><img src="figure/eda.Rmd/plot-upset-sbs-oc3-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-upset-sbs-oc3-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-upset-sbs-oc3-1">
 Past versions of plot-upset-sbs-oc3-1.png
@@ -3094,12 +3770,12 @@ Evgenii O. Tretiakov
   sets.x.label = &quot;Number of cells&quot;,
   text.scale = c(2, 1.6, 2, 1.3, 2, 3),
   nsets = 15,
-  sets = c(&quot;Cnr1&quot;, &quot;Prlr&quot;, &quot;Th&quot;, &quot;Onecut3&quot;) %&gt;%
+  sets = c(&quot;Cnr1&quot;, &quot;Cnr2&quot;, &quot;Prlr&quot;, &quot;Th&quot;, &quot;Onecut3&quot;) %&gt;%
     .[. %in% colnames(content_sbs_mtx_oc)],
   nintersects = 10,
   empty.intersections = NULL
 )</code></pre>
-<p><img src="figure/eda.Rmd/plot-upset-sbs-oc3-mod-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-upset-sbs-oc3-mod-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-upset-sbs-oc3-mod-1">
 Past versions of plot-upset-sbs-oc3-mod-1.png
@@ -3156,7 +3832,9 @@ Evgenii O. Tretiakov
 
 sbs_mtx_oc_full |&gt; glimpse()</code></pre>
 <pre><code>Rows: 401
-Columns: 44
+Columns: 48
+$ Slc17a6          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ Slc17a7          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Slc17a8          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Slc1a1           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,…
 $ Slc1a2           &lt;dbl&gt; 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0,…
@@ -3165,12 +3843,14 @@ $ Gad1             &lt;dbl&gt; 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1
 $ Slc32a1          &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,…
 $ Slc6a1           &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0,…
 $ Cnr1             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,…
+$ Cnr2             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Gpr55            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Dagla            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,…
 $ Daglb            &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Mgll             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Faah             &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1,…
 $ Napepld          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ Trpv1            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Gde1             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1,…
 $ Pparg            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
 $ Prlr             &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
@@ -3216,26 +3896,20 @@ sbs_mtx_oc_full$PRLR &lt;-
 sbs_mtx_oc_full$oc3 &lt;-
   (sbs_mtx_oc_full$Onecut3 &gt; 0)
 
-library(ggstatsplot)
 # for reproducibility
 set.seed(123)
 
 # plot
-grouped_ggpiestats(
-  # arguments relevant for `ggpiestats()`
+plot_grouped_pie(
   data = sbs_mtx_oc_full,
   x = CB1R,
   y = oc3,
   grouping.var = status,
-  perc.k = 1,
-  package = &quot;ggsci&quot;,
   palette = &quot;category10_d3&quot;,
-  # arguments relevant for `combine_plots()`
   title.text = &quot;Cnr1 specification of onecut-driven hypothalamic neuronal lineages by Onecut3 and main neurotransmitter expression&quot;,
-  caption.text = &quot;Asterisks denote results from proportion tests; \n***: p &lt; 0.001, ns: non-significant&quot;,
-  plotgrid.args = list(nrow = 2)
+  caption.text = &quot;Asterisks denote results from proportion tests; \n***: p &lt; 0.001, ns: non-significant&quot;
 )</code></pre>
-<p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-1.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-1.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-piecharts-sbs-oc3-chisqr-1">
 Past versions of plot-piecharts-sbs-oc3-chisqr-1.png
@@ -3284,21 +3958,16 @@ Evgenii O. Tretiakov
 </table>
 </div>
 </div>
-<pre class="r"><code>grouped_ggpiestats(
-  # arguments relevant for `ggpiestats()`
+<pre class="r"><code>plot_grouped_pie(
   data = sbs_mtx_oc_full,
   x = PRLR,
   y = CB1R,
   grouping.var = status,
-  perc.k = 1,
-  package = &quot;ggsci&quot;,
   palette = &quot;category10_d3&quot;,
-  # arguments relevant for `combine_plots()`
   title.text = &quot;Prlr specification of onecut-driven PeVN or TIDA hypothalamic neuronal lineages by Cnr1 and main neurotransmitter expression&quot;,
-  caption.text = &quot;Asterisks denote results from proportion tests; \n***: p &lt; 0.001, ns: non-significant&quot;,
-  plotgrid.args = list(nrow = 2)
+  caption.text = &quot;Asterisks denote results from proportion tests; \n***: p &lt; 0.001, ns: non-significant&quot;
 )</code></pre>
-<p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-2.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-2.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-piecharts-sbs-oc3-chisqr-2">
 Past versions of plot-piecharts-sbs-oc3-chisqr-2.png
@@ -3336,21 +4005,16 @@ Evgenii O. Tretiakov
 </table>
 </div>
 </div>
-<pre class="r"><code>grouped_ggpiestats(
-  # arguments relevant for `ggpiestats()`
+<pre class="r"><code>plot_grouped_pie(
   data = sbs_mtx_oc_full,
   x = PRLR,
   y = CB1R,
   grouping.var = celltype,
-  perc.k = 1,
-  package = &quot;ggsci&quot;,
   palette = &quot;category10_d3&quot;,
-  # arguments relevant for `combine_plots()`
   title.text = &quot;Prlr specification of onecut-driven PeVN or TIDA hypothalamic neuronal lineages by Cnr1&quot;,
-  caption.text = &quot;Asterisks denote results from proportion tests; \n***: p &lt; 0.001, ns: non-significant&quot;,
-  plotgrid.args = list(nrow = 2)
+  caption.text = &quot;Asterisks denote results from proportion tests; \n***: p &lt; 0.001, ns: non-significant&quot;
 )</code></pre>
-<p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-3.png" width="1344" style="display: block; margin: auto;" /></p>
+<p><img src="figure/eda.Rmd/plot-piecharts-sbs-oc3-chisqr-3.png" alt="" width="1344" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-plot-piecharts-sbs-oc3-chisqr-3">
 Past versions of plot-piecharts-sbs-oc3-chisqr-3.png
@@ -3397,129 +4061,82 @@ Session information
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.3.0 (2023-04-21)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.2 LTS
+<pre><code>R version 4.5.1 (2025-06-13)
+Platform: aarch64-apple-darwin24.6.0
+Running under: macOS Tahoe 26.3
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
-LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
+BLAS:   /nix/store/6mzxjk9lajhz47524h5p165prxjdmivx-blas-3/lib/libblas.dylib 
+LAPACK: /nix/store/6r1gd6cr5bcp8rj0rs750gdygpci74l1-openblas-0.3.30/lib/libopenblasp-r0.3.30.dylib;  LAPACK version 3.12.0
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
-time zone: Etc/UTC
-tzcode source: system (glibc)
+time zone: Europe/Vienna
+tzcode source: internal
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] ggstatsplot_0.11.1.9000 Nebulosa_1.10.0         RColorBrewer_1.1-3     
- [4] patchwork_1.1.2.9000    UpSetR_1.4.0            scCustomize_1.1.1      
- [7] SeuratDisk_0.0.0.9020   SeuratWrappers_0.3.1    SeuratObject_4.1.3     
-[10] Seurat_4.3.0            sctransform_0.3.5       future_1.32.0          
-[13] zeallot_0.1.0           magrittr_2.0.3          lubridate_1.9.2        
-[16] forcats_1.0.0           stringr_1.5.0           dplyr_1.1.2            
-[19] purrr_1.0.1             readr_2.1.4             tidyr_1.3.0            
-[22] tibble_3.2.1            ggplot2_3.4.2           tidyverse_2.0.0.9000   
-[25] here_1.0.1              workflowr_1.7.0        
+ [1] RColorBrewer_1.1-3    patchwork_1.3.2       UpSetR_1.4.0         
+ [4] SeuratDisk_0.0.0.9021 Seurat_5.4.0          SeuratObject_5.3.0   
+ [7] sp_2.2-0              future_1.69.0         zeallot_0.2.0        
+[10] magrittr_2.0.4        lubridate_1.9.4       forcats_1.0.0        
+[13] stringr_1.6.0         dplyr_1.2.0           purrr_1.2.1          
+[16] readr_2.1.5           tidyr_1.3.2           tibble_3.3.1         
+[19] ggplot2_4.0.2         tidyverse_2.0.0       here_1.0.2           
+[22] workflowr_1.7.2      
 
 loaded via a namespace (and not attached):
-  [1] fs_1.6.2                    matrixStats_0.63.0         
-  [3] spatstat.sparse_3.0-1       bitops_1.0-7               
-  [5] httr_1.4.5                  insight_0.19.1             
-  [7] tools_4.3.0                 utf8_1.2.3                 
-  [9] R6_2.5.1                    statsExpressions_1.5.0     
- [11] mgcv_1.8-42                 lazyeval_0.2.2             
- [13] uwot_0.1.14                 withr_2.5.0                
- [15] sp_1.6-0                    gridExtra_2.3              
- [17] progressr_0.13.0            textshaping_0.3.6          
- [19] cli_3.6.1                   Biobase_2.60.0             
- [21] spatstat.explore_3.1-0      sandwich_3.0-2             
- [23] prismatic_1.1.1             labeling_0.4.2             
- [25] sass_0.4.5                  mvtnorm_1.1-3              
- [27] spatstat.data_3.0-1         ggridges_0.5.4             
- [29] pbapply_1.7-0               systemfonts_1.0.4          
- [31] R.utils_2.12.2              parallelly_1.35.0          
- [33] rstudioapi_0.14             generics_0.1.3             
- [35] shape_1.4.6                 ica_1.0-3                  
- [37] spatstat.random_3.1-4       vroom_1.6.1                
- [39] Matrix_1.5-4                ggbeeswarm_0.7.1.9000      
- [41] fansi_1.0.4                 S4Vectors_0.38.0           
- [43] abind_1.4-5                 R.methodsS3_1.8.2          
- [45] lifecycle_1.0.3             whisker_0.4.1              
- [47] multcomp_1.4-23             yaml_2.3.7                 
- [49] snakecase_0.11.0            SummarizedExperiment_1.30.0
- [51] Rtsne_0.16                  paletteer_1.5.0            
- [53] grid_4.3.0                  promises_1.2.0.1           
- [55] crayon_1.5.2                miniUI_0.1.1.1             
- [57] lattice_0.21-8              cowplot_1.1.1              
- [59] pillar_1.9.0                knitr_1.42                 
- [61] GenomicRanges_1.52.0        estimability_1.4.1         
- [63] future.apply_1.10.0         codetools_0.2-19           
- [65] leiden_0.4.3                glue_1.6.2                 
- [67] getPass_0.2-2               data.table_1.14.8          
- [69] remotes_2.4.2               vctrs_0.6.2                
- [71] png_0.1-8                   gtable_0.3.3               
- [73] rematch2_2.1.2              datawizard_0.7.1           
- [75] cachem_1.0.7                ks_1.14.0                  
- [77] xfun_0.39                   mime_0.12                  
- [79] correlation_0.8.4           ggside_0.2.2               
- [81] pracma_2.4.2                coda_0.19-4                
- [83] survival_3.5-5              SingleCellExperiment_1.22.0
- [85] ellipsis_0.3.2              fitdistrplus_1.1-11        
- [87] TH.data_1.1-2               ROCR_1.0-11                
- [89] nlme_3.1-162                bit64_4.0.5                
- [91] RcppAnnoy_0.0.20            GenomeInfoDb_1.36.0        
- [93] rprojroot_2.0.3             bslib_0.4.2                
- [95] irlba_2.3.5.1               vipor_0.4.5                
- [97] KernSmooth_2.23-20          colorspace_2.1-0           
- [99] BiocGenerics_0.46.0         ggrastr_1.0.1              
-[101] tidyselect_1.2.0            processx_3.8.1             
-[103] emmeans_1.8.5               bit_4.0.5                  
-[105] compiler_4.3.0              git2r_0.32.0               
-[107] hdf5r_1.3.8                 DelayedArray_0.25.0        
-[109] plotly_4.10.1               bayestestR_0.13.1          
-[111] scales_1.2.1                lmtest_0.9-40              
-[113] callr_3.7.3                 digest_0.6.31              
-[115] goftest_1.2-3               spatstat.utils_3.0-2       
-[117] rmarkdown_2.21              XVector_0.40.0             
-[119] htmltools_0.5.5             pkgconfig_2.0.3            
-[121] MatrixGenerics_1.12.0       highr_0.10                 
-[123] fastmap_1.1.1               rlang_1.1.0                
-[125] GlobalOptions_0.1.2         htmlwidgets_1.6.2          
-[127] shiny_1.7.4                 farver_2.1.1               
-[129] jquerylib_0.1.4             zoo_1.8-12                 
-[131] jsonlite_1.8.4              mclust_6.0.0               
-[133] R.oo_1.25.0                 RCurl_1.98-1.12            
-[135] GenomeInfoDbData_1.2.10     parameters_0.21.0          
-[137] munsell_0.5.0               Rcpp_1.0.10                
-[139] reticulate_1.28-9000        stringi_1.7.12             
-[141] zlibbioc_1.46.0             MASS_7.3-59                
-[143] plyr_1.8.8                  parallel_4.3.0             
-[145] listenv_0.9.0               ggrepel_0.9.3              
-[147] deldir_1.0-6                splines_4.3.0              
-[149] tensor_1.5                  hms_1.1.3                  
-[151] circlize_0.4.15             ps_1.7.5                   
-[153] igraph_1.4.2                spatstat.geom_3.1-0        
-[155] effectsize_0.8.3            reshape2_1.4.4             
-[157] stats4_4.3.0                evaluate_0.20              
-[159] BiocManager_1.30.20         ggprism_1.0.4              
-[161] tzdb_0.3.0                  httpuv_1.6.9               
-[163] MatrixModels_0.5-1          BayesFactor_0.9.12-4.4     
-[165] RANN_2.6.1                  polyclip_1.10-4            
-[167] scattermore_0.8             rsvd_1.0.5                 
-[169] janitor_2.2.0.9000          xtable_1.8-4               
-[171] later_1.3.0                 ragg_1.2.5                 
-[173] viridisLite_0.4.1           beeswarm_0.4.0             
-[175] IRanges_2.34.0              cluster_2.1.4              
-[177] timechange_0.2.0            globals_0.16.2             </code></pre>
+  [1] rstudioapi_0.17.1      jsonlite_2.0.0         spatstat.utils_3.2-1  
+  [4] farver_2.1.2           rmarkdown_2.30         ragg_1.4.0            
+  [7] fs_1.6.6               vctrs_0.7.1            ROCR_1.0-12           
+ [10] spatstat.explore_3.7-0 janitor_2.2.1          htmltools_0.5.9       
+ [13] sass_0.4.10            sctransform_0.4.2      parallelly_1.46.1     
+ [16] KernSmooth_2.23-26     bslib_0.10.0           htmlwidgets_1.6.4     
+ [19] ica_1.0-3              plyr_1.8.9             plotly_4.12.0         
+ [22] zoo_1.8-15             cachem_1.1.0           whisker_0.4.1         
+ [25] igraph_2.1.4           mime_0.13              lifecycle_1.0.5       
+ [28] pkgconfig_2.0.3        Matrix_1.7-3           R6_2.6.1              
+ [31] fastmap_1.2.0          snakecase_0.11.1       fitdistrplus_1.2-6    
+ [34] shiny_1.12.1           digest_0.6.39          ps_1.9.1              
+ [37] rprojroot_2.1.1        tensor_1.5.1           RSpectra_0.16-2       
+ [40] irlba_2.3.5.1          textshaping_1.0.1      labeling_0.4.3        
+ [43] progressr_0.18.0       spatstat.sparse_3.1-0  timechange_0.3.0      
+ [46] mgcv_1.9-3             httr_1.4.7             polyclip_1.10-7       
+ [49] abind_1.4-8            compiler_4.5.1         bit64_4.6.0-1         
+ [52] withr_3.0.2            S7_0.2.1               fastDummies_1.7.5     
+ [55] MASS_7.3-65            ggsci_4.2.0            tools_4.5.1           
+ [58] lmtest_0.9-40          otel_0.2.0             httpuv_1.6.16         
+ [61] future.apply_1.20.1    goftest_1.2-3          glue_1.8.0            
+ [64] callr_3.7.6            nlme_3.1-168           promises_1.5.0        
+ [67] grid_4.5.1             Rtsne_0.17             getPass_0.2-4         
+ [70] cluster_2.1.8.1        reshape2_1.4.5         generics_0.1.4        
+ [73] hdf5r_1.3.12           gtable_0.3.6           spatstat.data_3.1-9   
+ [76] tzdb_0.5.0             data.table_1.17.8      hms_1.1.3             
+ [79] spatstat.geom_3.7-0    RcppAnnoy_0.0.23       ggrepel_0.9.6         
+ [82] RANN_2.6.2             pillar_1.11.1          vroom_1.6.5           
+ [85] spam_2.11-1            RcppHNSW_0.6.0         later_1.4.5           
+ [88] splines_4.5.1          lattice_0.22-7         bit_4.6.0             
+ [91] survival_3.8-3         deldir_2.0-4           tidyselect_1.2.1      
+ [94] miniUI_0.1.2           pbapply_1.7-4          knitr_1.51            
+ [97] git2r_0.36.2           gridExtra_2.3          scattermore_1.2       
+[100] xfun_0.56              matrixStats_1.5.0      stringi_1.8.7         
+[103] lazyeval_0.2.2         yaml_2.3.12            evaluate_1.0.5        
+[106] codetools_0.2-20       cli_3.6.5              uwot_0.2.4            
+[109] systemfonts_1.2.3      xtable_1.8-4           reticulate_1.44.1     
+[112] processx_3.8.6         jquerylib_0.1.4        Rcpp_1.1.1            
+[115] globals_0.19.0         spatstat.random_3.4-4  png_0.1-8             
+[118] spatstat.univar_3.1-6  parallel_4.5.1         dotCall64_1.2         
+[121] listenv_0.10.0         viridisLite_0.4.2      scales_1.4.0          
+[124] ggridges_0.5.7         crayon_1.5.3           rlang_1.1.7           
+[127] cowplot_1.2.0         </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
