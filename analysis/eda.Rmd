@@ -201,11 +201,49 @@ Plot_Density_Custom(
 ```
 
 ```{r plt-init-umap-density-Cnr2, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
-Plot_Density_Custom(
+scCustomize::FeaturePlot_scCustom(
   seurat_object = onecut3,
-  features = c("Cnr2"),
-  custom_palette = onecut3@misc$div_Colour_Pal
-)
+  features = "Cnr2",
+  colors_use = onecut3@misc$div_Colour_Pal)
+```
+
+## Cnr2 expression sanity check
+```{r cnr2-expression-summary}
+cnr2_expr <- NULL
+rna_data <- Seurat::GetAssayData(onecut3, assay = "RNA", layer = "data")
+if ("Cnr2" %in% rownames(rna_data)) {
+  cnr2_expr <- rna_data["Cnr2", ]
+} else {
+  cnr2_expr <- rep(0, ncol(onecut3))
+  message("Cnr2 not present in RNA assay; treating as zero.")
+}
+
+cnr2_df <- tibble::tibble(expr = as.numeric(cnr2_expr))
+cnr2_summary <- cnr2_df %>%
+  summarise(
+    n = n(),
+    n_expressed = sum(expr > 0),
+    pct_expressed = 100 * mean(expr > 0),
+    max_expr = max(expr)
+  )
+cnr2_summary
+```
+
+```{r plot-cnr2-expression, fig.height = 4, fig.width = 6}
+ggplot(cnr2_df, aes(x = expr)) +
+  geom_histogram(binwidth = 0.05, fill = "#a840ff", color = "white") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+  labs(
+    title = "Cnr2 expression in Onecut3 cells",
+    subtitle = sprintf(
+      "Cells > 0: %s (%.2f%%)",
+      cnr2_summary$n_expressed,
+      cnr2_summary$pct_expressed
+    ),
+    x = "log-normalized expression",
+    y = "Cells"
+  ) +
+  theme_minimal(base_size = 12)
 ```
 
 ```{r plt-init-umap-density-Gpr55, fig.width = 12, fig.height = 14, fig.fullwidth = TRUE}
